@@ -26,9 +26,10 @@ function numbersTimeOut() {
 
   function newTimer() {
     if (counter <= 20) {
-      setTimeout(() => {
+      setTimeout(function cb()  {
         console.log(counter++);
         newTimer();
+        setTimeout(cb, timeout);
       }, 100);
     } else {
       console.timeEnd("numbersTOut");
@@ -38,3 +39,48 @@ function numbersTimeOut() {
 }
 
 numbersTimeOut();
+
+/* const p1 = new Promise((resolve, reject) => {
+  resolve("Resolved promise");
+});
+
+console.log(p1);
+
+p1.then(
+  (string) => {
+    console.log("Promise result", string);
+
+    return new Promise((resolve, reject) => {
+      resolve(string);
+    }); //string;
+  },
+  (err) => {
+    console.error(err);
+  }
+).then(
+  (value) => {
+    console.log(value);
+  },
+  (err) => {
+    console.error(err);
+  }
+);
+ */
+const ulList = document.getElementById("userList");
+fetch("../../json.json")
+  .then((res) => res.json())
+  .then((data) => addLi(ulList, data))
+  .catch(console.error);
+
+/**
+ *
+ * @param {DOMElement} elem
+ * @param {Array of Object} data
+ */
+function addLi(elem, data) {
+  data.map((value) => {
+    const newLi = document.createElement("li");
+    newLi.textContent = JSON.stringify(value);
+    elem.append(newLi);
+  });
+}
