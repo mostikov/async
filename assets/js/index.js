@@ -26,7 +26,7 @@ function numbersTimeOut() {
 
   function newTimer() {
     if (counter <= 20) {
-      setTimeout(function cb()  {
+      setTimeout(function cb() {
         console.log(counter++);
         newTimer();
         setTimeout(cb, timeout);
@@ -66,21 +66,24 @@ p1.then(
   }
 );
  */
+
+console.log(window.location.href);
 const ulList = document.getElementById("userList");
 fetch("../../json.json")
   .then((res) => res.json())
   .then((data) => addLi(ulList, data))
   .catch(console.error);
 
-/**
- *
- * @param {DOMElement} elem
- * @param {Array of Object} data
- */
 function addLi(elem, data) {
-  data.map((value) => {
+  /**
+   *
+   * @param {DOMElement} elem
+   * @param {Array of Object} data
+   */
+  const newLiArr = data.map((value) => {
     const newLi = document.createElement("li");
     newLi.textContent = JSON.stringify(value);
-    elem.append(newLi);
+    return newLi;
   });
+  elem.append(...newLiArr);
 }

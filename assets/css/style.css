@@ -1,0 +1,73 @@
+#root {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  background-color: white;
+}
+
+.userCard {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  min-height: 350px;
+  min-width: 300px;
+  margin: 15px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 25px 1px rgba(0, 0, 0, 0.75);
+}
+.userInfo {
+  margin: 25px;
+  text-align: center;
+}
+.userAbout {
+  margin: 10px 0;
+  display: block;
+  opacity: 0.6;
+  text-align: center;
+}
+
+.userImg {
+  display: inline-block;
+  height: 120px;
+  width: 120px;
+  margin-top: 40px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.imgRelp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: indigo;
+  display: inline-block;
+  height: 120px;
+  width: 120px;
+  margin-top: 40px;
+  border-radius: 100%;
+}
+
+.imgRelp > span {
+  color: white;
+  position: relative;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-25%, -50%);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.connectBtn {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 10px 10px;
+  margin-bottom: 40px;
+}
+
+.connectBtn:hover {
+  background-color: #738efe;
+  border: 0px;
+}
