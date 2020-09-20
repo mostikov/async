@@ -47,7 +47,7 @@ function createUserCard(userData) {
     imgRepl.setAttribute(
       "style",
       `background-color: #${ascii_to_hexa(
-        "" + userData.firstName.charAt(0) + " " + userData.lastName.charAt(0)
+        userData.firstName.charAt(0) + userData.lastName.charAt(0)
       )}`
     );
     imgRepl.append(nameSymb);
@@ -57,9 +57,7 @@ function createUserCard(userData) {
   userBtn.classList.add("connectBtn");
   userBtn.dataset.connectId = userData.id;
 
-  newCard.append(userImg);
-  newCard.append(userInfo);
-  newCard.append(userBtn);
+  newCard.append(userImg, userInfo, userBtn);
   return newCard;
 }
 
@@ -75,5 +73,6 @@ function ascii_to_hexa(str) {
     const hex = Number(str.charCodeAt(n)).toString(16);
     arr1.push(hex);
   }
-  return arr1.join("");
+  const res = "0" + arr1.join("") + "9";
+  return res;
 }
