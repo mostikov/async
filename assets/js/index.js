@@ -1,35 +1,16 @@
 "use strict";
 
-const input = document.getElementById("input");
-const btn = document.getElementById("btn");
-
-btn.addEventListener("click", () => {
-  alert();
-});
-
-function numbersInterval() {
-  console.time("numbersInt");
-  let num = 0;
-  const timer1 = setInterval(() => {
-    console.log(++num);
-    if (num === 20) {
-      clearInterval(timer1);
-      console.timeEnd("numbersInt");
-    }
-  }, 100);
-}
-numbersInterval();
-
 function numbersTimeOut() {
   console.time("numbersTOut");
   let counter = 1;
 
+  const cbFunc = () => {};
+
   function newTimer() {
     if (counter <= 20) {
-      setTimeout(function cb() {
+      setTimeout(() => {
         console.log(counter++);
         newTimer();
-        setTimeout(cb, timeout);
       }, 100);
     } else {
       console.timeEnd("numbersTOut");
@@ -40,50 +21,9 @@ function numbersTimeOut() {
 
 numbersTimeOut();
 
-/* const p1 = new Promise((resolve, reject) => {
-  resolve("Resolved promise");
-});
-
-console.log(p1);
-
-p1.then(
-  (string) => {
-    console.log("Promise result", string);
-
-    return new Promise((resolve, reject) => {
-      resolve(string);
-    }); //string;
-  },
-  (err) => {
-    console.error(err);
-  }
-).then(
-  (value) => {
-    console.log(value);
-  },
-  (err) => {
-    console.error(err);
-  }
-);
- */
-
-console.log(window.location.href);
-const ulList = document.getElementById("userList");
-fetch("../../json.json")
-  .then((res) => res.json())
-  .then((data) => addLi(ulList, data))
-  .catch(console.error);
-
-function addLi(elem, data) {
-  /**
-   *
-   * @param {DOMElement} elem
-   * @param {Array of Object} data
-   */
-  const newLiArr = data.map((value) => {
-    const newLi = document.createElement("li");
-    newLi.textContent = JSON.stringify(value);
-    return newLi;
+function delay(ms) {
+  const newPromise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve(""), ms);
   });
-  elem.append(...newLiArr);
+  return newPromise;
 }
