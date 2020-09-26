@@ -1,12 +1,12 @@
 "use strict";
 
-const fetchUrl = "../../async/users.json";
+const fetchUrl = "./async/users.json";
 const rootElement = document.getElementById("root");
 fetch(fetchUrl)
   .then((res) => res.json())
   .then((data) => {
-    const temp = data.map((item) => createUserCard(item));
-    rootElement.append(...temp);
+    const userCards = data.map((item) => createUserCard(item));
+    rootElement.append(...userCards);
   })
   .catch(console.error);
 

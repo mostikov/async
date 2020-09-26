@@ -11,6 +11,12 @@ body {
   background-color: #f0f1f6;
 }
 
+.header {
+  height: 35px;
+  width: 100vw;
+  color: black;
+}
+
 .userCard {
   display: flex;
   background-color: white;
