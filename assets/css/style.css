@@ -5,16 +5,23 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-top: 55px;
 }
 
 body {
-  background-color: #f0f1f6;
+  background-color: #5e5f63;
 }
 
 .header {
-  height: 35px;
+  height: 45px;
   width: 100vw;
   color: black;
+  background-color: white;
+  position: fixed;
+  top: 0px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .userCard {
@@ -52,6 +59,14 @@ body {
   height: 120px;
   width: 120px;
   margin-top: 40px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.userImgSmall {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
   object-fit: cover;
   border-radius: 100%;
 }

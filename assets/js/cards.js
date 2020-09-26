@@ -1,14 +1,48 @@
 "use strict";
 
-const fetchUrl = "./async/users.json";
+const userCardUrl = "http://192.168.1.148:3000/users";
+const headUrl = "http://192.168.1.148:3000/auth";
 const rootElement = document.getElementById("root");
-fetch(fetchUrl)
-  .then((res) => res.json())
+
+fetchUrl(userCardUrl)
   .then((data) => {
     const userCards = data.map((item) => createUserCard(item));
     rootElement.append(...userCards);
   })
   .catch(console.error);
+
+fetchUrl(headUrl).then((data) => {
+  rootElement.prepend(createHeader(data));
+});
+
+function createHeader(data) {
+  const head = createElem({
+    elementTag: "header",
+    style: ["header"],
+  });
+
+  const userImg = createElem({
+    elementTag: "img",
+    attribute: [
+      { attr: "src", value: data.profilePicture },
+      { attr: "title", value: data.position },
+    ],
+    style: ["userImgSmall"],
+  });
+
+  const userName = createElem({
+    elementTag: "span",
+    textContent: `${data.firstName} ${data.lastName}`,
+    attribute: [],
+  });
+  head.append(userName, userImg);
+  return head;
+}
+
+function fetchUrl(url) {
+  const resp = fetch(url).then((res) => res.json());
+  return resp;
+}
 
 function createUserCard(userData) {
   if (!userData.firstName) {
@@ -45,11 +79,13 @@ function createUserCard(userData) {
   const newCard = createElem({
     elementTag: "div",
     style: ["userCard"],
+    dataset: [{ setName: "id", setValue: userData.id }],
     event: [
       {
         action: "click",
         event: (event) => {
           event.currentTarget.classList.toggle("userCardClicked");
+          const currentId = document.getElementById("");
         },
       },
     ],

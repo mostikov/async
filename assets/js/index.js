@@ -4,8 +4,7 @@ function numbersTimeOut() {
   console.time("numbersTOut");
   let counter = 1;
 
-  const cbFunc = () => {};
-
+  
   function newTimer() {
     if (counter <= 20) {
       setTimeout(() => {
